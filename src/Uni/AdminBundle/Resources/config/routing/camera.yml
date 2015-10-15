@@ -1,0 +1,31 @@
+camera:
+    path:     /
+    defaults: { _controller: "UniAdminBundle:Camera:index" }
+    methods: [GET]
+
+camera_show:
+    path:     /{id}/show
+    defaults: { _controller: "UniAdminBundle:Camera:show" }
+
+camera_new:
+    path:     /new
+    defaults: { _controller: "UniAdminBundle:Camera:new" }
+
+camera_create:
+    path:     /create
+    defaults: { _controller: "UniAdminBundle:Camera:create" }
+    methods: [POST]
+
+camera_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UniAdminBundle:Camera:edit" }
+
+camera_update:
+    path:     /{id}/update
+    defaults: { _controller: "UniAdminBundle:Camera:update" }
+    methods: [POST|PUT]
+
+camera_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UniAdminBundle:Camera:delete" }
+    methods: [POST|DELETE]

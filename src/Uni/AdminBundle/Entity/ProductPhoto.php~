@@ -1,0 +1,111 @@
+<?php
+
+namespace Uni\AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ProductPhoto
+ */
+class ProductPhoto
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $path;
+
+    /**
+     * @var string
+     */
+    private $file;
+
+    /**
+     * @var \Uni\AdminBundle\Entity\product
+     */
+    private $product;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return ProductPhoto
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string 
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
+     * Set file
+     *
+     * @param string $file
+     * @return ProductPhoto
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+
+        return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return string 
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * Set product
+     *
+     * @param \Uni\AdminBundle\Entity\product $product
+     * @return ProductPhoto
+     */
+    public function setProduct(\Uni\AdminBundle\Entity\product $product = null)
+    {
+        $this->product = $product;
+
+        return $this;
+    }
+
+    /**
+     * Get product
+     *
+     * @return \Uni\AdminBundle\Entity\product 
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
+}

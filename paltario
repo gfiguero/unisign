@@ -1,0 +1,50 @@
+UniAdmin
+
+Entidades
+---------------------
+php app/console doctrine:generate:entities UniAdminBundle --path="src"
+
+rm -rf src/Uni/AdminBundle/Entity/*
+php app/console doctrine:generate:entities UniAdminBundle:User --path="src"
+php app/console doctrine:generate:entities UniAdminBundle:Notice --path="src"
+php app/console doctrine:generate:entities UniAdminBundle:NoticePhoto --path="src"
+php app/console doctrine:generate:entities UniAdminBundle:Member --path="src"
+php app/console doctrine:generate:entities UniAdminBundle:Role --path="src"
+
+CRUD
+---------------------
+rm -rf src/Uni/AdminBundle/Controller/*
+rm -rf src/Uni/AdminBundle/Form/*
+rm -rf src/Uni/AdminBundle/Resources/config/routing/*
+
+php app/console generate:doctrine:crud --entity=UniAdminBundle:User --format=yml --with-write --overwrite --no-interaction --route-prefix=user
+php app/console generate:doctrine:crud --entity=UniAdminBundle:Notice --format=yml --with-write --overwrite --no-interaction --route-prefix=notice
+php app/console generate:doctrine:crud --entity=UniAdminBundle:NoticePhoto --format=yml --with-write --overwrite --no-interaction --route-prefix=noticephoto
+php app/console generate:doctrine:crud --entity=UniAdminBundle:Member --format=yml --with-write --overwrite --no-interaction --route-prefix=member
+php app/console generate:doctrine:crud --entity=UniAdminBundle:Role --format=yml --with-write --overwrite --no-interaction --route-prefix=role
+
+Base Datos y Chache
+---------------------
+php app/console doctrine:schema:update --force
+php app/console cache:clear --env=dev
+php app/console cache:clear --env=prod
+
+HTTPDUSER=`ps aux | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1`
+setfacl -Rn -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX web/uploads web/media
+setfacl -dRn -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX web/uploads web/media
+setfacl -Rn -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX app/cache app/logs
+setfacl -dRn -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX app/cache app/logs
+
+
+php app/console doctrine:schema:update --force
+php app/console cache:clear --env=dev
+php app/console cache:clear --env=prod
+
+Comiteo
+---------
+git commit -a -m ""
+git push -u origin master
+git remote add origin git@github.com:gfiguero/unipage.git
+git clone git@github.com:gfiguero/unipage.git
+git clone git@github.com:IronSummitMedia/startbootstrap-clean-blog
+git ls-files --deleted -z | xargs -0 git rm 

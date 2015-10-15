@@ -1,0 +1,31 @@
+history:
+    path:     /
+    defaults: { _controller: "UniAdminBundle:History:index" }
+    methods: [GET]
+
+history_show:
+    path:     /{id}/show
+    defaults: { _controller: "UniAdminBundle:History:show" }
+
+history_new:
+    path:     /new
+    defaults: { _controller: "UniAdminBundle:History:new" }
+
+history_create:
+    path:     /create
+    defaults: { _controller: "UniAdminBundle:History:create" }
+    methods: [POST]
+
+history_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UniAdminBundle:History:edit" }
+
+history_update:
+    path:     /{id}/update
+    defaults: { _controller: "UniAdminBundle:History:update" }
+    methods: [POST|PUT]
+
+history_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UniAdminBundle:History:delete" }
+    methods: [POST|DELETE]

@@ -1,0 +1,56 @@
+{% extends ':Page:base.html.twig' %}
+
+{% use 'UniPageBundle:Page:frontpage.html.twig' %}{% block stylesheet %}{{ parent() }}{% endblock %}
+
+{% use 'UniPageBundle:Page:footer.html.twig' %}{% block footer %}{{ parent() }}{% endblock %}
+
+{% block header %}
+    <header class="intro-header header-image">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>{{ "notice_index"|trans }}</h1>
+                        <hr class="small">
+                        <span class="subheading">{% if frontpage %}{{ frontpage.title }}{% endif %}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block javascript %}<script src="{{ asset('js/uniPage-main.js') }}"></script> {% endblock %}
+
+{% block body -%}
+    <section id="notice">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    {{ form(categoryForm, { 'style': 'inline' }) }}
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                {% for notice in notices %}
+                    <a href="{{ path('uni_page_notice_show', { 'id': notice.id }) }}">
+                    <div class="col-md-4">
+                        <div class="notice-preview">
+                            <div class="notice-title">{{ notice.title }}</div>
+                            <div class="notice-createdat">{{ notice.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}</div>
+                            <div class="notice-content">{{ notice.content | striptags | slice(0, 700) | raw }}</div>
+                        </div>
+                    </div>
+                    </a>
+                {% endfor %}
+            </div>
+            <div class="row">
+                <div class="text-center">
+                    {{ knp_pagination_render(notices) }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block title %}{% if frontpage %}{{ frontpage.title }}{% else %}Título{% endif %}{% endblock %}

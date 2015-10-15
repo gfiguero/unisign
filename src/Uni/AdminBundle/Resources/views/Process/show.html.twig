@@ -1,0 +1,64 @@
+{% extends ':Admin:base.html.twig' %}
+
+{% block title %}{{ app.request.attributes.get('_route')|trans }}{% endblock %}
+
+{% block body -%}
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">{% include ':Admin:icon.html.twig' %}{{ app.request.attributes.get('_route')|trans }}&nbsp;ID:&nbsp;{{ entity.id }}</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a type="button" class="btn btn-warning" href="{{ path('process_edit', { 'id': entity.id }) }}">{{ icon('pencil') }}&nbsp;{{ 'process_edit'|trans }}</a>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-confirm">{{ icon('trash-o') }}&nbsp;{{ 'process_delete'|trans }}</button>
+                        <div class="modal fade" id="modal-confirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog modal-md" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">{{ 'Are you sure?'|trans }}</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>{{ 'Deleted records can not be recovered.'|trans }}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="pull-right" style="height:34px;">
+                                            {{ form(delete_form) }}
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-4">
+                            <img class="img-rounded img-responsive" src="{{ asset(entity.webpath) | imagine_filter('admin_process') }}">
+                        </div>
+                        <div class="col-md-8">
+                            <dl class="dl-horizontal dl-horizontal-sm dl-horizontal-md dl-horizontal-lg">
+                                <dt>{{ 'process_title'|trans }}</dt><dd>{% if entity.title %}{{ entity.title }}{% endif %}</dd>
+                                <dt>{{ 'process_name'|trans }}</dt><dd>{% if entity.name %}{{ entity.name }}{% endif %}</dd>
+                                <dt>{{ 'process_abstract'|trans }}</dt><dd>{% if entity.abstract %}{{ entity.abstract|raw }}{% endif %}</dd>
+                                <dt>{{ 'process_content'|trans }}</dt><dd>{% if entity.content %}{{ entity.content|raw }}{% endif %}</dd>
+                                <dt>{{ 'process_rank'|trans }}</dt><dd>{% if entity.rank %}{{ entity.rank }}{% endif %}</dd>
+                                <dt>{{ 'process_active'|trans }}</dt><dd>{% if entity.active %}{{ 'Si' }}{% else %}{{ 'No' }}{% endif %}</dd>
+                                <dt>{{ 'process_createdAt'|trans }}</dt><dd>{% if entity.createdAt %}{{ entity.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
+                                <dt>{{ 'process_updatedAt'|trans }}</dt><dd>{% if entity.updatedAt %}{{ entity.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
+{% endblock %}

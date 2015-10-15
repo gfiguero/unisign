@@ -1,0 +1,18 @@
+user_registration_register:
+    path:     /
+    defaults: { _controller: "UniUserBundle:Registration:register" }
+
+user_registration_check_email:
+    path:     /check-email
+    defaults: { _controller: "UniUserBundle:Registration:checkEmail" }
+    methods: [GET]
+
+user_registration_confirm:
+    path:     /confirm/{token}
+    defaults: { _controller: "UniUserBundle:Registration:confirm" }
+    methods: [GET]
+
+user_registration_confirmed:
+    path:     /confirmed
+    defaults: { _controller: "UniUserBundle:Registration:confirmed" }
+    methods: [GET]

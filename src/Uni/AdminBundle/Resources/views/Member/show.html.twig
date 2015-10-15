@@ -1,0 +1,65 @@
+{% extends ':Admin:base.html.twig' %}
+
+{% block title %}{{ app.request.attributes.get('_route')|trans }}{% endblock %}
+
+{% block body -%}
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">{% include ':Admin:icon.html.twig' %}{{ app.request.attributes.get('_route')|trans }}&nbsp;ID:&nbsp;{{ entity.id }}</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a type="button" class="btn btn-warning" href="{{ path('member_edit', { 'id': entity.id }) }}">{{ icon('pencil') }}&nbsp;{{ 'member_edit'|trans }}</a>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-confirm">{{ icon('trash-o') }}&nbsp;{{ 'member_delete'|trans }}</button>
+                        <div class="modal fade" id="modal-confirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog modal-md" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">{{ 'Are you sure?'|trans }}</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>{{ 'Deleted records can not be recovered.'|trans }}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="pull-right" style="height:34px;">
+                                            {{ form(delete_form) }}
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-4">
+                            <img class="img-rounded img-responsive" alt="{{ entity.firstname }}" src="{{ asset(entity.webpath) | imagine_filter('admin_member') }}">
+                        </div>
+                        <div class="col-md-8">
+                            <dl class="dl-horizontal dl-horizontal-sm dl-horizontal-md dl-horizontal-lg">
+                                <dt>{{ 'member_firstname'|trans }}</dt><dd>{% if entity.firstname %}{{ entity.firstname }}{% endif %}</dd>
+                                <dt>{{ 'member_lastname'|trans }}</dt><dd>{% if entity.lastname %}{{ entity.lastname }}{% endif %}</dd>
+                                <dt>{{ 'member_email'|trans }}</dt><dd>{% if entity.email %}{{ entity.email }}{% endif %}</dd>
+                                <dt>{{ 'member_phonenumber'|trans }}</dt><dd>{% if entity.phonenumber %}{{ entity.phonenumber }}{% endif %}</dd>
+                                <dt>{{ 'member_birthdate'|trans }}</dt><dd>{% if entity.birthdate %}{{ entity.birthdate|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
+                                <dt>{{ 'member_admissiondate'|trans }}</dt><dd>{% if entity.admissiondate %}{{ entity.admissiondate|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
+                                <dt>{{ 'member_active'|trans }}</dt><dd>{% if entity.active %}{{ 'Si' }}{% else %}{{ 'No' }}{% endif %}</dd>
+                                <dt>{{ 'member_createdAt'|trans }}</dt><dd>{% if entity.createdAt %}{{ entity.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
+                                <dt>{{ 'member_updatedAt'|trans }}</dt><dd>{% if entity.updatedAt %}{{ entity.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
+{% endblock %}

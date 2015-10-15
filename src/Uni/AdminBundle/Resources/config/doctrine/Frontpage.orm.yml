@@ -1,0 +1,62 @@
+Uni\AdminBundle\Entity\Frontpage:
+    type: entity
+    table: Frontpage
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: '200'
+        subtitle:
+            type: string
+            length: '200'
+            nullable: true
+        email:
+            type: string
+            length: '100'
+            nullable: true
+        phonenumber:
+            type: string
+            length: '100'
+            nullable: true
+        address:
+            type: string
+            length: '300'
+            nullable: true
+        mission:
+            type: text
+            nullable: true
+        vision:
+            type: text
+            nullable: true
+        active:
+            type: boolean
+            options:
+                default: false
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    oneToMany:
+        photos:
+            targetEntity: FrontpagePhoto
+            cascade: [persist]
+            mappedBy: frontpage
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

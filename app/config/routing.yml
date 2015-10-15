@@ -1,0 +1,21 @@
+uni_user:
+    resource: "@UniUserBundle/Resources/config/routing.yml"
+    prefix:   /user
+
+uni_admin:
+    resource: "@UniAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+uni_page:
+    resource: "@UniPageBundle/Resources/config/routing.yml"
+    prefix:   /
+
+user_resetting:
+    resource: "@UniUserBundle/Resources/config/routing/resetting.yml"
+    prefix: /resetting
+
+user_security:
+    resource: "@UniUserBundle/Resources/config/routing/security.yml"
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"

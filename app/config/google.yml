@@ -1,0 +1,27 @@
+google:
+    analytics:
+        enhanced_ecommerce: false
+        session_auto_started: true
+        trackers:
+            default:
+                name: MyJavaScriptCompatibleVariableNameWithNoSpaces
+                accountId: UA-68916636-1
+                domain: .unisign.cl
+                setSiteSpeedSampleRate: 5
+                allowAnchor: true
+                allowHash: true
+                includeNamePrefix: false
+                plugins:
+                    - 'linkid'
+        whitelist: [ 'q', 'utm_source', 'utm_medium', 'utm_term', 'utm_content', 'utm_campaign' ]
+    adwords:
+        conversions:
+            account_create:
+                id:    111111
+                label: accountCreateLabel
+                value: 0
+            checkout_thanks:
+                id:    222222
+                label: checkoutThanksLabel
+                value: 0
+    maps: ~

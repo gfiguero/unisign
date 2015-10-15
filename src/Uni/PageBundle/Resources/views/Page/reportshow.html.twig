@@ -1,0 +1,50 @@
+{% extends ':Page:base.html.twig' %}
+
+{% use 'UniPageBundle:Page:frontpage.html.twig' %}{% block stylesheet %}{{ parent() }}{% endblock %}
+
+{% use 'UniPageBundle:Page:footer.html.twig' %}{% block footer %}{{ parent() }}{% endblock %}
+
+{% block header %}
+    <header class="intro-header header-image">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>{{ "report_index"|trans }}</h1>
+                        <hr class="small">
+                        <span class="subheading">{{ frontpage.title }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block javascript %}{% endblock %}
+
+{% block body -%}
+    <section id="reportshow">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h3 class="featurette-heading">{{ report.title }}</h3>
+                    <h6 class="text-muted">
+                        Publicado: {{ report.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }},
+                        Actualizado: {{ report.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}
+                    </h6>
+                    {% if 'default' not in report.webpath %}<a class="btn btn-default btn-lg" href="{{ asset(report.webpath) }}" target="_blank">{{ icon('download fa-fw fa-lg') }}Descargar informe</a>{% endif %}
+                    <p>{{ report.content | raw }}</p>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="featurette-heading">Los 10 últimos informes</h3>
+                    <div class="list-group">
+                        {% for oreport in reports %}
+                        {#  #}
+                            <a href="{{ path('uni_page_report_show', { 'id': oreport.id }) }}" class="report-title list-group-item {% if oreport.id == report.id %}active{% endif %}">{{ oreport.title }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

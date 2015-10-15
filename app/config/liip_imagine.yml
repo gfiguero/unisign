@@ -1,0 +1,131 @@
+liip_imagine:
+    resolvers:
+        default:
+            web_path: ~
+    filter_sets:
+        cache: ~
+# uniPage
+        page_frontpage:
+            quality: 75
+            default_image: /uploads/frontpage/default.png
+            filters:
+                upscale: { min: [1920, 450] }
+                thumbnail: { size: [1920, 450], mode: outbound }
+        page_service:
+            quality: 75
+            default_image: /uploads/service/default.png
+            filters:
+                upscale: { min: [250, 250] }
+                thumbnail: { size: [250, 250], mode: outbound }
+        page_process:
+            quality: 75
+            default_image: /uploads/process/default.png
+            filters:
+                upscale: { min: [250, 250] }
+                thumbnail: { size: [250, 250], mode: outbound }
+        page_process_modal:
+            quality: 75
+            default_image: /uploads/process/default.png
+            filters:
+                upscale: { min: [1280, 720] }
+                thumbnail: { size: [1280, 720], mode: outbound }
+        page_member:
+            quality: 75
+            default_image: /uploads/member/default.png
+            filters:
+                upscale: { min: [400, 400] }
+                thumbnail: { size: [400, 400], mode: outbound }
+        page_member_modal:
+            quality: 75
+            default_image: /uploads/member/default.png
+            filters:
+                upscale: { min: [800, 800] }
+                thumbnail: { size: [800, 800], mode: outbound }
+        page_notice:
+            quality: 75
+            default_image: /uploads/notice/default.png
+            filters:
+                upscale: { min: [1280, 720] }
+                thumbnail: { size: [1280, 720], mode: outbound }
+        page_gallery_preview:
+            quality: 75
+            default_image: /uploads/notice/default.png
+            filters:
+                upscale: { min: [400, 225] }
+                thumbnail: { size: [400, 225], mode: outbound }
+        page_gallery_modal:
+            quality: 75
+            default_image: /uploads/notice/default.png
+            filters:
+                upscale: { min: [1280, 720] }
+                thumbnail: { size: [1280, 720], mode: outbound }
+        page_publication:
+            quality: 75
+            default_image: /uploads/publication/default.png
+            filters:
+                upscale: { min: [200, 200] }
+                thumbnail: { size: [200, 200], mode: outbound }
+        page_logo:
+            quality: 75
+            filters:
+                upscale: { min: [500, 133] }
+                thumbnail: { size: [500, 133], mode: outbound }
+# uniAdmin
+        admin_logo:
+            quality: 75
+            filters:
+                upscale: { min: [196, 40] }
+                thumbnail: { size: [196, 40], mode: outbound }
+        login_logo:
+            quality: 75
+            filters:
+                upscale: { min: [500, 103] }
+                thumbnail: { size: [500, 103], mode: outbound }
+        admin_frontpage:
+            quality: 50
+            default_image: /uploads/frontpage/default.png
+            filters:
+                upscale: { min: [840, 200] }
+                thumbnail: { size: [840, 200], mode: outbound }
+        admin_service:
+            quality: 50
+            default_image: /uploads/service/default.png
+            filters:
+                upscale: { min: [400, 400] }
+                thumbnail: { size: [400, 400], mode: outbound }
+        admin_member:
+            quality: 50
+            default_image: /uploads/member/default.png
+            filters:
+                upscale: { min: [400, 400] }
+                thumbnail: { size: [400, 400], mode: outbound }
+        admin_process:
+            quality: 50
+            default_image: /uploads/process/default.png
+            filters:
+                upscale: { min: [400, 400] }
+                thumbnail: { size: [400, 400], mode: outbound }
+        admin_report:
+            quality: 50
+            default_image: /uploads/report/default.png
+            filters:
+                upscale: { min: [280, 300] }
+                thumbnail: { size: [280, 300], mode: outbound }
+        admin_notice:
+            quality: 50
+            default_image: /uploads/notice/default.png
+            filters:
+                upscale: { min: [200, 150] }
+                thumbnail: { size: [200, 150], mode: outbound }
+        admin_product:
+            quality: 50
+            default_image: /uploads/product/default.png
+            filters:
+                upscale: { min: [400, 400] }
+                thumbnail: { size: [400, 400], mode: outbound }
+        admin_publication:
+            quality: 50
+            default_image: /uploads/publication/default.png
+            filters:
+                upscale: { min: [300, 300] }
+                thumbnail: { size: [300, 300], mode: outbound }

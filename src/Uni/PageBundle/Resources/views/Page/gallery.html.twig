@@ -1,0 +1,67 @@
+{% extends ':Page:base.html.twig' %}
+
+{% use 'UniPageBundle:Page:frontpage.html.twig' %}{% block stylesheet %}{{ parent() }}{% endblock %}
+
+{% use 'UniPageBundle:Page:footer.html.twig' %}{% block footer %}{{ parent() }}{% endblock %}
+
+{% block header %}
+    <header class="intro-header header-image">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>{{ "gallery_index"|trans }}</h1>
+                        <hr class="small">
+                        <span class="subheading">{% if frontpage %}{{ frontpage.title }}{% endif %}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block javascript %}<script src="{{ asset('js/uniPage-main.js') }}"></script> {% endblock %}
+
+{% block body -%}
+    <section id="notice">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    {{ form(categoryForm, { 'style': 'inline' }) }}
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                {% for photo in photos %}
+                    <a href="#" data-toggle="modal" data-target="#modal{{ photo.id }}">
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <div class="gallery-preview">
+                                <img class="img-responsive" src={{ asset(photo.webpath) | imagine_filter('page_gallery_preview') }}>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="modal fade" id="modal{{ photo.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog modal-xlg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body modal-body-gallery">
+                                    <img class="img-responsive" src="{{ asset(photo.webpath) | imagine_filter('page_gallery_modal') }}">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <div class="text-left">{{ photo.notice.title }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="row">
+                <div class="text-center">
+                    {{ knp_pagination_render(photos) }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block title %}{% if frontpage %}{{ frontpage.title }}{% else %}Título{% endif %}{% endblock %}

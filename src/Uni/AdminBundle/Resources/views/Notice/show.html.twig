@@ -1,0 +1,63 @@
+{% extends ':Admin:base.html.twig' %}
+
+{% block title %}{{ app.request.attributes.get('_route')|trans }}{% endblock %}
+
+{% block body -%}
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">{% include ':Admin:icon.html.twig' %}{{ app.request.attributes.get('_route')|trans }}&nbsp;ID:&nbsp;{{ entity.id }}</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a type="button" class="btn btn-warning" href="{{ path('notice_edit', { 'id': entity.id }) }}">{{ icon('pencil') }}&nbsp;{{ 'notice_edit'|trans }}</a>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-confirm">{{ icon('trash-o') }}&nbsp;{{ 'notice_delete'|trans }}</button>
+                        <div class="modal fade" id="modal-confirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog modal-md" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">{{ 'Are you sure?'|trans }}</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>{{ 'Deleted records can not be recovered.'|trans }}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="pull-right" style="height:34px;">
+                                            {{ form(delete_form) }}
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <dl class="dl-horizontal dl-horizontal-sm dl-horizontal-md dl-horizontal-lg">
+                            <dt>{{ 'notice_title'|trans }}</dt><dd>{% if entity.title %}{{ entity.title }}{% endif %}</dd>
+                            <dt>{{ 'notice_content'|trans }}</dt><dd>{% if entity.content %}{{ entity.content|raw }}{% endif %}</dd>
+                            <dt>{{ 'notice_published'|trans }}</dt><dd>{% if entity.published %}{{ 'Si' }}{% else %}{{ 'No' }}{% endif %}</dd>
+                            <dt>{{ 'notice_createdAt'|trans }}</dt><dd>{% if entity.createdAt %}{{ entity.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
+                            <dt>{{ 'notice_updatedAt'|trans }}</dt><dd>{% if entity.updatedAt %}{{ entity.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        {% for photo in entity.photos %}
+                            <img src="{{ asset(photo.webpath) | imagine_filter('admin_notice') }}" class="img-responsive img-thumbnail">
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
+{% endblock %}

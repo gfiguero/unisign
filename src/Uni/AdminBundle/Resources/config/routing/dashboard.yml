@@ -1,0 +1,5 @@
+dashboard:
+    path:     /
+    defaults: { _controller: "UniAdminBundle:Dashboard:index" }
+    methods: [GET]
+

@@ -1,0 +1,115 @@
+# Assetic Configuration
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: false
+    bundles:        [ ]
+    #java: /usr/bin/java
+    filters:
+        less:
+            node: /usr/bin/node
+            node_paths: [/usr/lib/node_modules]
+            apply_to: "\.less$"
+        cssrewrite: ~
+    assets:
+        font-awesome-otf:
+            inputs: '%kernel.root_dir%/../vendor/components/font-awesome/fonts/FontAwesome.otf'
+            output: fonts/FontAwesome.otf
+        font-awesome-eot:
+            inputs: '%kernel.root_dir%/../vendor/components/font-awesome/fonts/fontawesome-webfont.eot'
+            output: fonts/fontawesome-webfont.eot
+        font-awesome-svg:
+            inputs: '%kernel.root_dir%/../vendor/components/font-awesome/fonts/fontawesome-webfont.svg'
+            output: fonts/fontawesome-webfont.svg
+        font-awesome-ttf:
+            inputs: '%kernel.root_dir%/../vendor/components/font-awesome/fonts/fontawesome-webfont.ttf'
+            output: fonts/fontawesome-webfont.ttf
+        font-awesome-woff:
+            inputs: '%kernel.root_dir%/../vendor/components/font-awesome/fonts/fontawesome-webfont.woff'
+            output: fonts/fontawesome-webfont.woff
+        font-awesome-woff2:
+            inputs: '%kernel.root_dir%/../vendor/components/font-awesome/fonts/fontawesome-webfont.woff2'
+            output: fonts/fontawesome-webfont.woff2
+        font_awesome_css:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/font-awesome/css/font-awesome.min.css
+            output: css/font-awesome.min.css
+        jquery_js:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/jquery/jquery.min.js
+            output: js/jquery.min.js
+        jqueryui_js:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/jqueryui/jquery-ui.min.js
+            output: js/jquery-ui.min.js
+        fileinput_js:
+            inputs:
+                - %kernel.root_dir%/../vendor/kartik-v/bootstrap-fileinput/js/fileinput.min.js
+            output: js/fileinput.min.js
+        fileinput_locale_es_js:
+            inputs:
+                - %kernel.root_dir%/../vendor/kartik-v/bootstrap-fileinput/js/fileinput_locale_es.js
+            output: js/fileinput_locale_es.js
+        jqueryui_css:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/jqueryui/themes/base/jquery-ui.min.css
+            output: css/jquery-ui.min.css
+        fileinput_css:
+            inputs:
+                - %kernel.root_dir%/../vendor/kartik-v/bootstrap-fileinput/css/fileinput.min.css
+            output: css/fileinput.min.css
+        uniAdmin_css:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/bootstrap-switch/src/less/bootstrap3/build.less
+                - %kernel.root_dir%/Resources/less/uniAdmin/uniAdmin.less
+                - %kernel.root_dir%/../bower_components/startbootstrap-sb-admin-2/less/sb-admin-2.less
+                - %kernel.root_dir%/../vendor/braincrafted/bootstrap-bundle/Braincrafted/Bundle/BootstrapBundle/Resources/less/form.less
+            filters:
+                - less
+                - cssrewrite
+            output: css/uniAdmin.css
+        uniPage_css:
+            inputs:
+                - %kernel.root_dir%/Resources/less/uniPage/uniPage.less
+                #- %kernel.root_dir%/Resources/less/clean-blog/clean-blog.less
+                #- %kernel.root_dir%/../git_components/startbootstrap-clean-blog/less/clean-blog.less
+            filters:
+                - less
+                - cssrewrite
+            output: css/uniPage.css
+        uniAdmin_js:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/bootstrap/js/transition.js
+                - %kernel.root_dir%/../vendor/components/bootstrap/js/alert.js
+                - %kernel.root_dir%/../vendor/components/bootstrap/js/button.js
+                - %kernel.root_dir%/../vendor/components/bootstrap/js/carousel.js
+                - %kernel.root_dir%/../vendor/components/bootstrap/js/collapse.js
+                - %kernel.root_dir%/../vendor/components/bootstrap/js/dropdown.js
+                - %kernel.root_dir%/../vendor/components/bootstrap/js/modal.js
+                - %kernel.root_dir%/../vendor/components/bootstrap/js/tooltip.js
+                - %kernel.root_dir%/../vendor/components/bootstrap/js/popover.js
+                - %kernel.root_dir%/../vendor/components/bootstrap/js/scrollspy.js
+                - %kernel.root_dir%/../vendor/components/bootstrap/js/tab.js
+                - %kernel.root_dir%/../vendor/components/bootstrap/js/affix.js
+                - %kernel.root_dir%/../vendor/components/bootstrap-switch/dist/js/bootstrap-switch.js
+                - %kernel.root_dir%/../bower_components/startbootstrap-sb-admin-2/dist/js/sb-admin-2.js
+                - %kernel.root_dir%/../bower_components/metisMenu/src/metisMenu.js
+                - %kernel.root_dir%/../vendor/braincrafted/bootstrap-bundle/Braincrafted/Bundle/BootstrapBundle/Resources/js/bc-bootstrap-collection.js
+            output: js/uniAdmin.js
+        uniPage_js:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/bootstrap/js/transition.js
+                - %kernel.root_dir%/../vendor/components/bootstrap/js/alert.js
+                - %kernel.root_dir%/../vendor/components/bootstrap/js/button.js
+                - %kernel.root_dir%/../vendor/components/bootstrap/js/carousel.js
+                - %kernel.root_dir%/../vendor/components/bootstrap/js/collapse.js
+                - %kernel.root_dir%/../vendor/components/bootstrap/js/dropdown.js
+                - %kernel.root_dir%/../vendor/components/bootstrap/js/modal.js
+                - %kernel.root_dir%/../vendor/components/bootstrap/js/tooltip.js
+                - %kernel.root_dir%/../vendor/components/bootstrap/js/popover.js
+                - %kernel.root_dir%/../vendor/components/bootstrap/js/scrollspy.js
+                - %kernel.root_dir%/../vendor/components/bootstrap/js/tab.js
+                - %kernel.root_dir%/../vendor/components/bootstrap/js/affix.js
+                - %kernel.root_dir%/../bower_components/metisMenu/src/metisMenu.js
+                - %kernel.root_dir%/../git_components/startbootstrap-clean-blog/js/clean-blog.js
+            output: js/uniPage.js
+

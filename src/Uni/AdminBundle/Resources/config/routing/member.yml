@@ -1,0 +1,31 @@
+member:
+    path:     /
+    defaults: { _controller: "UniAdminBundle:Member:index" }
+    methods: [GET]
+
+member_show:
+    path:     /{id}/show
+    defaults: { _controller: "UniAdminBundle:Member:show" }
+
+member_new:
+    path:     /new
+    defaults: { _controller: "UniAdminBundle:Member:new" }
+
+member_create:
+    path:     /create
+    defaults: { _controller: "UniAdminBundle:Member:create" }
+    methods: [POST]
+
+member_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UniAdminBundle:Member:edit" }
+
+member_update:
+    path:     /{id}/update
+    defaults: { _controller: "UniAdminBundle:Member:update" }
+    methods: [POST|PUT]
+
+member_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UniAdminBundle:Member:delete" }
+    methods: [POST|DELETE]

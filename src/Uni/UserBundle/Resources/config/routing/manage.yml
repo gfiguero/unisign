@@ -1,0 +1,35 @@
+user:
+    path:     /
+    defaults: { _controller: "UniUserBundle:Manage:index" }
+    methods: [GET]
+
+user_show:
+    path:     /{id}/show
+    defaults: { _controller: "UniUserBundle:Manage:show" }
+
+user_new:
+    path:     /new
+    defaults: { _controller: "UniUserBundle:Manage:new" }
+
+user_create:
+    path:     /create
+    defaults: { _controller: "UniUserBundle:Manage:create" }
+    methods: [POST]
+
+user_manage_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UniUserBundle:Manage:edit" }
+
+user_manage_update:
+    path:     /{id}/update
+    defaults: { _controller: "UniUserBundle:Manage:update" }
+    methods: [POST|PUT]
+
+user_manage_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UniUserBundle:Manage:delete" }
+    methods: [POST|DELETE]
+
+user_manage_send:
+    path:     /send
+    defaults: { _controller: "UniUserBundle:Manage:send" }

@@ -1,0 +1,111 @@
+<?php
+
+namespace Uni\AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * NoticePhoto
+ */
+class NoticePhoto
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $path;
+
+    /**
+     * @var string
+     */
+    private $file;
+
+    /**
+     * @var \Uni\AdminBundle\Entity\Notice
+     */
+    private $notice;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return NoticePhoto
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string 
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
+     * Set file
+     *
+     * @param string $file
+     * @return NoticePhoto
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+
+        return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return string 
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * Set notice
+     *
+     * @param \Uni\AdminBundle\Entity\Notice $notice
+     * @return NoticePhoto
+     */
+    public function setNotice(\Uni\AdminBundle\Entity\Notice $notice = null)
+    {
+        $this->notice = $notice;
+
+        return $this;
+    }
+
+    /**
+     * Get notice
+     *
+     * @return \Uni\AdminBundle\Entity\Notice 
+     */
+    public function getNotice()
+    {
+        return $this->notice;
+    }
+}

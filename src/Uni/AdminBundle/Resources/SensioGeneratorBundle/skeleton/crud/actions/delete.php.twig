@@ -1,0 +1,64 @@
+    /**
+{% block phpdoc_method_header %}
+     * Deletes a {{ entity }} entity.
+{% endblock phpdoc_method_header %}
+     *
+{% block phpdoc_method_annotations %}
+{% if 'annotation' == format %}
+     * @Route("/{id}", name="{{ route_name_prefix }}_delete")
+     * @Method("DELETE")
+{% endif %}
+{% endblock phpdoc_method_annotations %}
+     */
+{% block method_definition %}
+    public function deleteAction(Request $request, $id)
+{% endblock method_definition %}
+    {
+{% block method_body %}
+        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm->handleRequest($request);
+
+        if ($deleteForm->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $entity = $em->getRepository('{{ bundle }}:{{ entity }}')->find($id);
+
+            if (!$entity) {
+                throw $this->createNotFoundException('The {{ entity }} cannot be found.');
+            }
+
+            $em->remove($entity);
+            $em->flush();
+            $request->getSession()->getFlashBag()->add( 'danger', '{{ entity }} has been deleted.' );
+        }
+{% endblock method_body %}
+
+{% block method_return %}
+        return $this->redirect($this->generateUrl('{{ route_name_prefix }}'));
+{% endblock method_return %}
+    }
+
+{% block form %}
+    /**
+     * Creates a form to delete a {{ entity }} entity by id.
+     *
+     * @param mixed $id The entity id
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+
+    private function createDeleteForm($id)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('{{ route_name_prefix }}_delete', array('id' => $id)))
+            ->setMethod('DELETE')
+            ->add('actions', 'form_actions', [
+                'buttons' => [
+                    'cancel' => ['type' => 'button', 'options' => ['label' => 'cancel', 'attr' => array('icon' => 'remove', 'class' => 'btn-default', 'data-dismiss' => 'modal')]],
+                    'delete' => ['type' => 'submit', 'options' => ['label' => 'confirm', 'attr' => array('icon' => 'trash-o', 'class' => 'btn-danger')]],
+                ]
+            ])
+            ->getForm()
+        ;
+    }
+
+{% endblock form %}

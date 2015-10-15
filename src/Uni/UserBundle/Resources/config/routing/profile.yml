@@ -1,0 +1,13 @@
+user_profile_show:
+    path:     /
+    defaults: { _controller: "UniUserBundle:Profile:show" }
+
+user_profile_edit:
+    path:     /edit
+    defaults: { _controller: "UniUserBundle:Profile:edit" }
+
+user_profile_update:
+    path:     /update
+    defaults: { _controller: "UniUserBundle:Profile:update" }
+    methods: [POST|PUT]
+

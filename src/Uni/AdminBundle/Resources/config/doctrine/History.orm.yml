@@ -1,0 +1,54 @@
+Uni\AdminBundle\Entity\History:
+    type: entity
+    table: History
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        time:
+            type: string
+            length: '200'
+        title:
+            type: string
+            length: '200'
+        abstract:
+            type: text
+            nullable: true
+        content:
+            type: text
+            nullable: true
+        rank:
+            type: integer
+        published:
+            type: boolean
+            options:
+                default: false
+        path:
+            type: string
+            length: '300'
+            nullable: true
+        file:
+            type: string
+            length: '300'
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

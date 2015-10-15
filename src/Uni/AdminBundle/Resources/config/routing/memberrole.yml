@@ -1,0 +1,31 @@
+memberrole:
+    path:     /
+    defaults: { _controller: "UniAdminBundle:MemberRole:index" }
+    methods: [GET]
+
+memberrole_show:
+    path:     /{id}/show
+    defaults: { _controller: "UniAdminBundle:MemberRole:show" }
+
+memberrole_new:
+    path:     /new
+    defaults: { _controller: "UniAdminBundle:MemberRole:new" }
+
+memberrole_create:
+    path:     /create
+    defaults: { _controller: "UniAdminBundle:MemberRole:create" }
+    methods: [POST]
+
+memberrole_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UniAdminBundle:MemberRole:edit" }
+
+memberrole_update:
+    path:     /{id}/update
+    defaults: { _controller: "UniAdminBundle:MemberRole:update" }
+    methods: [POST|PUT]
+
+memberrole_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UniAdminBundle:MemberRole:delete" }
+    methods: [POST|DELETE]

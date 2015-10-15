@@ -1,0 +1,76 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+    access_denied_url:    ~
+    encoders:
+        FOS\UserBundle\Model\UserInterface: sha512
+        Symfony\Component\Security\Core\User\User: plaintext
+
+    role_hierarchy:
+        ROLE_FRONTPAGE:   ROLE_USER
+        ROLE_SERVICE:     ROLE_USER
+        ROLE_PROCESS:     ROLE_USER
+        ROLE_MEMBER:      ROLE_USER
+        ROLE_NOTICE:      ROLE_USER
+        ROLE_PUBLICATION: ROLE_USER
+        ROLE_REPORT:      ROLE_USER
+        ROLE_ACCESS:      ROLE_USER
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+    providers:
+        chain_provider:
+            chain:
+                providers: [in_memory, uni_userbundle]
+        in_memory:
+            memory:
+                users:
+                    admin: { password: Au0ZedG4Ewn5aOK, roles: 'ROLE_ADMIN' }
+        uni_userbundle:
+            id: fos_user.user_provider.username
+
+    firewalls:
+#        dev:
+#            pattern: ^/(_(profiler|wdt)|css|images|js)/
+#            security: false
+#            anonymous: ~
+
+#        login_firewall:
+#            pattern:   ^/login$
+#            anonymous: ~
+
+        main:
+            pattern:   ^/
+            anonymous: ~
+            http_basic:
+                realm: "Secured Demo Area"
+            form_login:
+                login_path: /login
+                check_path: /login_check
+                always_use_default_target_path: true
+                default_target_path: /admin
+                provider: uni_userbundle
+                csrf_provider: security.csrf.token_manager
+                failure_path: /login
+            logout:
+                path:   /logout
+                target: /login
+
+    access_control:
+        - { path: ^/admin/frontpage, role: [ROLE_FRONTPAGE, ROLE_ADMIN] }
+        - { path: ^/admin/service, roles: [ROLE_SERVICE, ROLE_ADMIN] }
+        - { path: ^/admin/process, roles: [ROLE_PROCESS, ROLE_ADMIN] }
+        - { path: ^/admin/member, roles: [ROLE_MEMBER, ROLE_ADMIN] }
+        - { path: ^/admin/notice, roles: [ROLE_NOTICE, ROLE_ADMIN] }
+        - { path: ^/admin/publication, roles: [ROLE_PUBLICATION, ROLE_ADMIN] }
+        - { path: ^/admin/report, roles: [ROLE_REPORT, ROLE_ADMIN] }
+        - { path: ^/user/manage, roles: [ROLE_ACCESS, ROLE_ADMIN] }
+        - { path: ^/user/register, roles: [ROLE_ACCESS, ROLE_ADMIN] }
+        - { path: ^/admin, roles: [ROLE_USER] }
+        - { path: ^/user, roles: [ROLE_USER] }
+        - { path: ^/resetting, roles: [IS_AUTHENTICATED_ANONYMOUSLY] }
+        - { path: ^/login, roles: [IS_AUTHENTICATED_ANONYMOUSLY] }
+        - { path: ^/, roles: [IS_AUTHENTICATED_ANONYMOUSLY] }
+        #- { path: ^/admin$, roles: ROLE_USER }
+        # - { path: ^/, roles: ROLE_ADMIN }
+        # Include the following line to also secure the /admin path itself

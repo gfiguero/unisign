@@ -1,0 +1,18 @@
+braincrafted_bootstrap:
+    output_dir:
+    assets_dir: %kernel.root_dir%/../vendor/components/bootstrap
+    jquery_path: %kernel.root_dir%/../vendor/components/jquery/jquery.min.js
+    less_filter: less # "less", "lessphp", "sass" or "none"
+    fonts_dir: %kernel.root_dir%/../web/fonts
+    icon_prefix: fa
+    fontawesome_dir: 
+    auto_configure:
+        assetic: false
+        twig: false
+        knp_menu: true
+        knp_paginator: true
+    customize:
+        variables_file: %kernel.root_dir%/Resources/less/variables.less
+        bootstrap_output: %kernel.root_dir%/Resources/less/bootstrap.less
+        bootstrap_template: BraincraftedBootstrapBundle:Bootstrap:bootstrap.less.twig
+

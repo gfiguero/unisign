@@ -1,0 +1,98 @@
+.img-centered {
+    margin: 0 auto;
+}
+
+.row-no-padding {
+  [class*="col-"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+.bg-gray-lighter {
+    background-color: @gray-lighter;
+}
+
+body {
+    font-family: @font-family-serif;
+    font-size: 20px;
+    color: @gray-dark;
+    webkit-tap-highlight-color: @brand-primary;
+}
+
+.uniadmin-logo {
+    padding: 5px 25px;
+}
+
+// -- Typography
+
+p {
+    line-height: 1.5;
+    margin: 30px 0;
+    a {
+        text-decoration: underline;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: @font-family-sans-serif;
+    font-weight: 800;
+}
+
+a {
+    color: @gray-dark;
+    &:hover,
+    &:focus {
+        color: @brand-primary;
+    }
+}
+
+a img {
+    &:hover,
+    &:focus {
+        cursor: zoom-in;
+    }
+}
+
+blockquote {
+    color: @gray;
+    font-style: italic;
+}
+
+hr.small {
+    max-width: 100px;
+    margin: 15px auto;
+    border-width: 4px;
+    border-color: white;
+}
+
+// Highlight Color Customization
+
+::-moz-selection {
+    color: white;
+    text-shadow: none;
+    background: @brand-primary;
+}
+
+::selection {
+    color: white;
+    text-shadow: none;
+    background: @brand-primary;
+}
+
+img::selection {
+    color: white;
+    background: transparent;
+}
+
+img::-moz-selection {
+    color: white;
+    background: transparent;
+}
+
+

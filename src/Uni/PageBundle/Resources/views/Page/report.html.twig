@@ -1,0 +1,50 @@
+{% extends ':Page:base.html.twig' %}
+
+{% use 'UniPageBundle:Page:frontpage.html.twig' %}{% block stylesheet %}{{ parent() }}{% endblock %}
+
+{% use 'UniPageBundle:Page:footer.html.twig' %}{% block footer %}{{ parent() }}{% endblock %}
+
+{% block header %}
+    <header class="intro-header header-image">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>{{ "report_index"|trans }}</h1>
+                        <hr class="small">
+                        <span class="subheading">{% if frontpage %}{{ frontpage.title }}{% endif %}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block javascript %}{% endblock %}
+
+{% block body -%}
+    <section id="report">
+        <div class="container">
+            <div class="row">
+                {% for report in reports %}
+                    <a href="{{ path('uni_page_report_show', { 'id': report.id }) }}">
+                        <div class="col-xs-12">
+                            <div class="report-preview">
+                                <div class="report-title">{{ report.title }}</div>
+                                {#}<div class="report-createdat">{{ report.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}</div>{#}
+                                {#}<div class="report-content">{{ report.content | striptags | slice(0, 700) | raw }}</div>{#}
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+            <div class="row">
+                <div class="text-center">
+                    {{ knp_pagination_render(reports) }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block title %}{% if frontpage %}{{ frontpage.title }}{% else %}Título{% endif %}{% endblock %}

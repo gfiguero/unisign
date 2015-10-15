@@ -1,0 +1,9 @@
+{% block stylesheet %}
+    {% if frontpage is not empty and frontpage.photos is not empty %}
+        {% set photo = random(frontpage.photos) %}
+        {% set webpath = photo.webpath %}
+    {% else %}
+        {% set webpath = 'default' %}
+    {% endif %}
+    <style type="text/css">.header-image { background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url('{{ asset(webpath) | imagine_filter('page_frontpage') }}'); }</style>
+{% endblock %}

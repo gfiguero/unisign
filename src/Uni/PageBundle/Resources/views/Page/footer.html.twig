@@ -1,0 +1,27 @@
+{% block footer %}
+    <footer class="bg-gray-lighter">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <p class="copyright text-muted">
+                                {{ icon('envelope fa-fw') }}&nbsp;{% if frontpage %}{{ frontpage.email }}{% endif %}
+                            </p>
+                        </li>
+                        <li>
+                            <p class="copyright text-muted">
+                                {{ icon('phone fa-fw') }}&nbsp;{% if frontpage %}{{ frontpage.phonenumber }}{% endif %}
+                            </p>
+                        </li>
+                        <li>
+                            <p class="copyright text-muted">
+                                {{ icon('map-marker fa-fw') }}&nbsp;{% if frontpage %}{{ frontpage.address }}{% endif %}
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endblock %}

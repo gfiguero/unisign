@@ -1,0 +1,31 @@
+process:
+    path:     /
+    defaults: { _controller: "UniAdminBundle:Process:index" }
+    methods: [GET]
+
+process_show:
+    path:     /{id}/show
+    defaults: { _controller: "UniAdminBundle:Process:show" }
+
+process_new:
+    path:     /new
+    defaults: { _controller: "UniAdminBundle:Process:new" }
+
+process_create:
+    path:     /create
+    defaults: { _controller: "UniAdminBundle:Process:create" }
+    methods: [POST]
+
+process_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UniAdminBundle:Process:edit" }
+
+process_update:
+    path:     /{id}/update
+    defaults: { _controller: "UniAdminBundle:Process:update" }
+    methods: [POST|PUT]
+
+process_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UniAdminBundle:Process:delete" }
+    methods: [POST|DELETE]

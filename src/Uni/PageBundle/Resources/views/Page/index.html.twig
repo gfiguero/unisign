@@ -1,0 +1,54 @@
+{% extends ':Page:base.html.twig' %}
+
+{% use 'UniPageBundle:Page:frontpage.html.twig' %}
+
+{% use 'UniPageBundle:Page:contact.html.twig' %}
+
+{% use 'UniPageBundle:Page:service.html.twig' %}
+
+{% use 'UniPageBundle:Page:missionvision.html.twig' %}
+
+{% block stylesheet %}{{ parent() }}{% endblock %}
+
+{% block header %}
+    <header class="intro-header header-image">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>{% if frontpage %}{{ frontpage.title }}
+                            {% else %}Título
+                            {% endif %}
+                        </h1>
+                        <hr class="small">
+                        <span class="subheading">{% if frontpage %}{{ frontpage.subtitle }}{% else %}subtítulo{% endif %}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block body -%}
+
+    {% block service %}{{ parent() }}{% endblock %}
+
+    {% block missionvision %}{{ parent() }}{% endblock %}
+
+    {% block contact %}{{ parent() }}{% endblock %}
+
+{% endblock %}
+
+{% block footer %}
+    <footer class="bg-gray-lighter">
+        <div class="container">
+            <div class="row">
+                <p class="text-muted">{% if frontpage %}{{ frontpage.title }}{% endif %} - 2015</p>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
+
+{% block javascript %}{% endblock %}
+
+{% block title %}{% if frontpage %}{{ frontpage.title }}{% else %}Título{% endif %}{% endblock %}

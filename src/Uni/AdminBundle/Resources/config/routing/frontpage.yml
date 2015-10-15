@@ -1,0 +1,31 @@
+frontpage:
+    path:     /
+    defaults: { _controller: "UniAdminBundle:Frontpage:index" }
+    methods: [GET]
+
+frontpage_show:
+    path:     /{id}/show
+    defaults: { _controller: "UniAdminBundle:Frontpage:show" }
+
+frontpage_new:
+    path:     /new
+    defaults: { _controller: "UniAdminBundle:Frontpage:new" }
+
+frontpage_create:
+    path:     /create
+    defaults: { _controller: "UniAdminBundle:Frontpage:create" }
+    methods: [POST]
+
+frontpage_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UniAdminBundle:Frontpage:edit" }
+
+frontpage_update:
+    path:     /{id}/update
+    defaults: { _controller: "UniAdminBundle:Frontpage:update" }
+    methods: [POST|PUT]
+
+frontpage_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UniAdminBundle:Frontpage:delete" }
+    methods: [POST|DELETE]

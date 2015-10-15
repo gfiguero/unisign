@@ -1,0 +1,62 @@
+uni_admin_dashboard:
+    resource: "@UniAdminBundle/Resources/config/routing/dashboard.yml"
+    prefix:   /dashboard
+
+uni_admin_camera:
+    resource: "@UniAdminBundle/Resources/config/routing/camera.yml"
+    prefix:   /camera
+
+uni_admin_process:
+    resource: "@UniAdminBundle/Resources/config/routing/process.yml"
+    prefix:   /process
+
+uni_admin_publication:
+    resource: "@UniAdminBundle/Resources/config/routing/publication.yml"
+    prefix:   /publication
+
+uni_admin_productcategory:
+    resource: "@UniAdminBundle/Resources/config/routing/productcategory.yml"
+    prefix:   /productcategory
+
+uni_admin_product:
+    resource: "@UniAdminBundle/Resources/config/routing/product.yml"
+    prefix:   /product
+
+uni_admin_noticecategory:
+    resource: "@UniAdminBundle/Resources/config/routing/noticecategory.yml"
+    prefix:   /noticecategory
+
+uni_admin_service:
+    resource: "@UniAdminBundle/Resources/config/routing/service.yml"
+    prefix:   /service
+
+uni_admin_frontpage:
+    resource: "@UniAdminBundle/Resources/config/routing/frontpage.yml"
+    prefix:   /frontpage
+
+uni_admin_notice:
+    resource: "@UniAdminBundle/Resources/config/routing/notice.yml"
+    prefix:   /notice
+
+uni_admin_history:
+    resource: "@UniAdminBundle/Resources/config/routing/history.yml"
+    prefix:   /history
+
+uni_admin_report:
+    resource: "@UniAdminBundle/Resources/config/routing/report.yml"
+    prefix:   /report
+
+uni_admin_memberrole:
+    resource: "@UniAdminBundle/Resources/config/routing/memberrole.yml"
+    prefix:   /memberrole
+
+uni_admin_member:
+    resource: "@UniAdminBundle/Resources/config/routing/member.yml"
+    prefix:   /member
+
+uni_admin:
+    path: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /admin/dashboard
+        permanent: true

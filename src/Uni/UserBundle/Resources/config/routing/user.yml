@@ -1,0 +1,16 @@
+user_manage:
+    resource: "@UniUserBundle/Resources/config/routing/manage.yml"
+    prefix: /manage
+
+user_profile:
+    resource: "@UniUserBundle/Resources/config/routing/profile.yml"
+    prefix: /profile
+
+user_change_password:
+    resource: "@UniUserBundle/Resources/config/routing/change_password.yml"
+    prefix: /profile
+
+user_register:
+    resource: "@UniUserBundle/Resources/config/routing/registration.yml"
+    prefix: /register
+

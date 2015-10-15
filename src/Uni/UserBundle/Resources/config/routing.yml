@@ -1,0 +1,4 @@
+uni_user:
+    resource: "@UniUserBundle/Resources/config/routing/user.yml"
+    prefix:   /
+

@@ -1,0 +1,31 @@
+noticecategory:
+    path:     /
+    defaults: { _controller: "UniAdminBundle:NoticeCategory:index" }
+    methods: [GET]
+
+noticecategory_show:
+    path:     /{id}/show
+    defaults: { _controller: "UniAdminBundle:NoticeCategory:show" }
+
+noticecategory_new:
+    path:     /new
+    defaults: { _controller: "UniAdminBundle:NoticeCategory:new" }
+
+noticecategory_create:
+    path:     /create
+    defaults: { _controller: "UniAdminBundle:NoticeCategory:create" }
+    methods: [POST]
+
+noticecategory_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UniAdminBundle:NoticeCategory:edit" }
+
+noticecategory_update:
+    path:     /{id}/update
+    defaults: { _controller: "UniAdminBundle:NoticeCategory:update" }
+    methods: [POST|PUT]
+
+noticecategory_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UniAdminBundle:NoticeCategory:delete" }
+    methods: [POST|DELETE]

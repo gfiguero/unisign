@@ -1,0 +1,77 @@
+{% extends ':Page:base.html.twig' %}
+
+{% use 'UniPageBundle:Page:frontpage.html.twig' %}{% block stylesheet %}{{ parent() }}{% endblock %}
+
+{% use 'UniPageBundle:Page:footer.html.twig' %}{% block footer %}{{ parent() }}{% endblock %}
+
+{% block header %}
+    <header class="intro-header header-image">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>{{ "notice_index"|trans }}</h1>
+                        <hr class="small">
+                        <span class="subheading">{{ frontpage.title }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block javascript %}{% endblock %}
+
+{% block body -%}
+    <section id="noticeshow">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h3 class="featurette-heading">{{ notice.title }}</h3>
+                    <h6 class="text-muted">
+                        Publicado: {{ notice.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }},
+                        Actualizado: {{ notice.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}
+                    </h6>
+                    {% if notice.photos is not empty %}
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            {% for photo in notice.photos %}
+                                <li data-target="#myCarousel" data-slide-to="{{ loop.index0 }}" {% if loop.first %}class="active"{% endif %}></li>
+                            {% endfor %}
+                        </ol>
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                            {% for photo in notice.photos %}
+                                <div class="item {% if loop.first %}active{% endif %}"><img class="img-responsive" alt="{{ notice.title }}" src={{ asset(photo.webpath) | imagine_filter('page_notice') }}></div>
+                            {% endfor %}
+                        </div>
+
+                        {% if notice.photos|length > 1 %}
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Anterior</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Siguiente</span>
+                        </a>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                    <p>{{ notice.content | raw }}</p>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="featurette-heading">Las 10 últimas noticias</h3>
+                    <div class="list-group">
+                        {% for onotice in notices %}
+                            <a href="{{ path('uni_page_notice_show', { 'id': onotice.id }) }}" class="onotice-title list-group-item {% if onotice.id == notice.id %}active{% endif %}">{{ onotice.title }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

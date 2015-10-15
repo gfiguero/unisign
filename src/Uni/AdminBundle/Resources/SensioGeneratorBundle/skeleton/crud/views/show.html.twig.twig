@@ -1,0 +1,71 @@
+{% block extends %}
+{{ "{% extends ':Admin:base.html.twig' %}" }}
+{% endblock extends %}
+
+{% block body %}
+{{ "{% block title %}" }}{{ "{{ app.request.attributes.get('_route')|trans }}" }}{{ "{% endblock %}" }}
+
+{{ "{% block body -%}" }}
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">{{ "{% include ':Admin:icon.html.twig' %}" }}{{ "{{ app.request.attributes.get('_route')|trans }}" }}&nbsp;ID:&nbsp;{{ "{{ entity." ~ identifier ~ " }}" }}</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a type="button" class="btn btn-warning" href="{{ "{{ path('" ~ route_name_prefix ~ "_edit', { 'id': entity."~ identifier ~" }) }}" }}">{{ "{{ icon('pencil') }}" }}&nbsp;{{ "{{ '" ~ entity|lower ~ "_edit'|trans }}" }}</a>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-confirm">{{ "{{ icon('trash-o') }}" }}&nbsp;{{ "{{ '" ~ entity|lower ~ "_delete'|trans }}" }}</button>
+                        <div class="modal fade" id="modal-confirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog modal-md" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">{{ "{{ 'Are you sure?'|trans }}" }}</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>{{ "{{ 'Deleted records can not be recovered.'|trans }}" }}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="pull-right" style="height:34px;">
+                                            {{ '{{ form(delete_form) }}' }}
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <dl class="dl-horizontal dl-horizontal-sm dl-horizontal-md dl-horizontal-lg">
+                        {%- for field, metadata in fields %}
+
+                            {%- if not loop.first %}{%- if field not in ['deletedAt', 'path'] %}
+
+                            <dt>{{ "{{ '" }}{{ entity|lower ~ "_" ~ field }}{{ "'|trans }}" }}</dt>
+                            {%- if metadata.type in ['date', 'datetime'] %}<dd>{{ '{% if entity.' ~ field|replace({'_': ''}) ~ ' %}{{ entity.' ~ field|replace({'_': ''}) ~ '|localizeddate(\'full\', \'full\', \'es_ES\', \'America/Santiago\', "d \'de\' LLLL \'de\' Y - HH:mm") }}{% endif %}' }}</dd>
+
+                            {%- elseif field in ['active', 'published'] %}<dd>{{ '{% if entity.' ~ field|replace({'_': ''}) ~ " %}{{ 'Si' }}{% else %}{{ 'No' }}{% endif %}" }}</dd>
+                            {%- else %}<dd>{{ '{% if entity.' ~ field|replace({'_': ''}) ~ ' %}{{ entity.' ~ field|replace({'_': ''}) ~ ' }}{% endif %}' }}</dd>
+
+                            {%- endif %}
+
+                            {%- endif %}{%- endif %}
+
+                        {%- endfor %}
+
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
+{{ "{% endblock %}" }}
+{% endblock body %}

@@ -1,0 +1,31 @@
+report:
+    path:     /
+    defaults: { _controller: "UniAdminBundle:Report:index" }
+    methods: [GET]
+
+report_show:
+    path:     /{id}/show
+    defaults: { _controller: "UniAdminBundle:Report:show" }
+
+report_new:
+    path:     /new
+    defaults: { _controller: "UniAdminBundle:Report:new" }
+
+report_create:
+    path:     /create
+    defaults: { _controller: "UniAdminBundle:Report:create" }
+    methods: [POST]
+
+report_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UniAdminBundle:Report:edit" }
+
+report_update:
+    path:     /{id}/update
+    defaults: { _controller: "UniAdminBundle:Report:update" }
+    methods: [POST|PUT]
+
+report_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UniAdminBundle:Report:delete" }
+    methods: [POST|DELETE]

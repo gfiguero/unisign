@@ -1,0 +1,111 @@
+{% block extends %}
+{{ "{% extends ':Admin:base.html.twig' %}" }}
+{% endblock extends %}
+
+{% block body %}
+{{ "{% block title %}" }}{{ "{{ '" ~ route_name_prefix ~ "_index'|trans }}" }}{{ "{% endblock %}" }}
+
+{{ "{% block body -%}" }}
+
+    <div id="page-wrapper">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">{{ "{% include ':Admin:icon.html.twig' %}" }}{{ "{{ '" ~ route_name_prefix ~ "_index'|trans }}" }}</h1>
+                {{ "{% for flashMessage in app.session.flashbag.get('success') %}" }}
+                    <div class="alert alert-success alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="close">{{ "{{ icon('remove fa-fw') }}" }}</button>
+                        <strong>{{ "{{ 'notification'|trans }}" }}: </strong>{{ "{{ flashMessage|trans }}" }}
+                    </div>
+                {{ "{% endfor %}" }}
+
+                {{ "{% for flashMessage in app.session.flashbag.get('danger') %}" }}
+                    <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="close">{{ "{{ icon('remove fa-fw') }}" }}</button>
+                        <strong>{{ "{{ 'notification'|trans }}" }}: </strong>{{ "{{ flashMessage|trans }}" }}
+                    </div>
+                {{ "{% endfor %}" }}
+
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="btn-group">
+                            <a class="btn btn-primary" href="{{ "{{ path('" ~ route_name_prefix ~ "_new') }}" }}">{{ "{{ icon('file') }}" }}&nbsp;{{ "{{ '" ~ route_name_prefix ~ "_new'|trans }}" }}</a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="records_list table table-striped table-hover">
+                            <thead>
+                                {%- for field, metadata in fields %}
+
+                                    {%- if loop.first %}
+
+                                <tr>
+
+                                    {%- elseif field not in ['deletedAt', 'path', 'file', 'content', 'decription'] %}
+
+                                    <th>{{ "{{ knp_pagination_sortable(pagination, '" ~ entity|lower ~ "_" ~ field ~ "'|trans, '" ~ field ~ "') }}" }}{{ "{% if sort == '" ~ field ~ "' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}" }}</th>
+
+                                    {%- endif %}
+
+                                {%- endfor %}
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {{ '{% for entity in pagination %}' }}
+                            {%- for field, metadata in fields %}
+
+                                {%- if loop.first %}
+
+                                <tr class='clickableRow' href="{{ "{{ path('" ~ route_name_prefix ~ "_show', { 'id': entity."~ identifier ~" }) }}" }}">
+
+                                {%- elseif field in ['deletedAt', 'path', 'file', 'content', 'decription'] %}
+                                {%- elseif field in ['published', 'active'] %}
+
+                                    <td>{{ '{% if entity.' ~ field|replace({'_': ''}) ~ ' %}' }}{{ "{{ 'Si' }}{% else %}{{ 'No' }}{% endif %}" }}</td>
+                                {%- elseif metadata.type in ['date', 'time', 'datetime'] %}
+
+                                    {%- if metadata.type == 'date' %}
+
+                                    <td>{{ '{% if entity.' ~ field|replace({'_': ''}) ~ ' %}{{ entity.' ~ field|replace({'_': ''}) ~ '|localizeddate(\'full\', \'full\', \'es_ES\', \'America/Santiago\', "dd-LLL-Y") }}{% endif %}' }}</td>
+                                    {%- else %}
+
+                                    <td>{{ '{% if entity.' ~ field|replace({'_': ''}) ~ ' %}{{ entity.' ~ field|replace({'_': ''}) ~ '|localizeddate(\'full\', \'full\', \'es_ES\', \'America/Santiago\', "dd-LLL-Y - HH:mm") }}{% endif %}' }}</td>
+                                    {%- endif %}
+
+                                {%- else %}
+
+                                    <td>{{ '{% if entity.' ~ field|replace({'_': ''}) ~ ' %}' }}{{ '{{ entity.' ~ field|replace({'_': ''}) ~ ' }}{% endif %}' }}</td>
+
+                                {%- endif %}
+
+                            {%- endfor %}
+
+                                </tr>
+                            {{ '{% endfor %}' }}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="text-center">
+                            {{ '{{ knp_pagination_render(pagination) }}' }}
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
+
+{{ "{% endblock %}" }}
+{% endblock body %}

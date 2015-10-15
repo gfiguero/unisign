@@ -1,0 +1,277 @@
+# All
+notification: Notificación
+createdAt: Fecha de Registro
+updatedAt: Última Actualización
+deletedAt: Fecha de Borrado
+Deleted records can not be recovered.: Los registros borrados no podrán ser recuperados.
+Are you sure?: ¿Está seguro?
+home: Inicio
+login: Acceso
+logout: Salir
+
+# All Buttons
+create: Registrar
+save: Guardar
+edit: Editar
+delete: Borrar
+confirm: Confirmar
+cancel: Cancelar
+back: Volver
+
+# ---------------------------------------------------------------
+
+# Frontpage
+frontpage: Portada
+frontpage_index: Portadas
+frontpage_new: Nueva portada
+frontpage_show: Ver portada
+frontpage_edit: Editar portada
+frontpage_delete: Borrar portada
+frontpage_title: Título de la portada
+frontpage_subtitle: Subtítulo
+frontpage_email: Email de contacto
+frontpage_phonenumber: Teléfono de contacto
+frontpage_address: Dirección
+frontpage_mission: Misión
+frontpage_vision: Visión
+frontpage_active: Portada activa
+frontpage_photos: Fotos de portada
+frontpage_photo_add: Agregar
+frontpage_photo_delete: Borrar
+frontpage_createdAt: Fecha de Registro
+frontpage_updatedAt: Última Actualización
+Frontpage has been created.: La portada ha sido creada.
+Frontpage has been updated.: La portada ha sido actualizada.
+Frontpage has been deleted.: La portada ha sido borrada.
+
+# Member
+member: Integrante
+member_control: Control de Integrantes
+member_index: Integrantes
+member_new: Nuevo Integrante
+member_show: Ver Integrante
+member_edit: Editar Integrante
+member_delete: Borrar Integrante
+member_firstname: Nombre
+member_lastname: Apellido
+member_email: Email
+member_phonenumber: Teléfono
+member_birthdate: Fecha Nacimiento
+member_admissiondate: Fecha Ingreso
+member_active: Activo
+member_file: Foto Perfil
+member_path: Directorio
+member_role: Cargo Asignado
+member_createdAt: Fecha de Registro
+member_updatedAt: Última Actualización
+Member has been created.: El integrante ha sido creado.
+Member has been updated.: El integrante ha sido actualizado.
+Member has been deleted.: El integrante ha sido borrado.
+
+# Member Role
+memberrole: Cargo
+memberrole_index: Cargos
+memberrole_new: Nuevo Cargo
+memberrole_show: Ver Cargo
+memberrole_edit: Editar Cargo
+memberrole_delete: Borrar Cargo
+memberrole_name: Nombre
+memberrole_rank: Rango
+memberrole_createdAt: Fecha de Registro
+memberrole_updatedAt: Última Actualización
+MemberRole has been created.: El cargo ha sido creado.
+MemberRole has been updated.: El cargo ha sido actualizado.
+MemberRole has been deleted.: El cargo ha sido borrado.
+
+# Notice
+notice: Noticia
+notice_control: Control de Noticias
+notice_index: Noticias
+notice_new: Nueva Noticia
+notice_show: Ver Noticia
+notice_edit: Editar Noticia
+notice_delete: Borrar Noticia
+notice_title: Título
+notice_content: Contenido
+notice_published: Publicada
+notice_photos: Fotos
+notice_photo_add: Agregar Foto
+notice_photo_delete: Borrar Foto
+notice_category: Categoría
+notice_createdAt: Publicado
+notice_updatedAt: Actualizado
+Notice has been created.: La noticia ha sido creada.
+Notice has been updated.: La noticia ha sido actualizada.
+Notice has been deleted.: La noticia ha sido borrada.
+
+# NoticeCategory
+noticecategory: Categoría de noticias
+noticecategory_index: Categorías de noticias
+noticecategory_new: Nueva Categoría
+noticecategory_show: Ver Categoría
+noticecategory_edit: Editar Categoría
+noticecategory_delete: Borrar Categoría
+noticecategory_name: Nombre
+noticecategory_submit: Filtrar
+noticecategory_createdAt: Fecha de Registro
+noticecategory_updatedAt: Última Actualización
+NoticeCategory has been created.: La categoría de noticias ha sido creada.
+NoticeCategory has been updated.: La categoría de noticias ha sido actualizada.
+NoticeCategory has been deleted.: La categoría de noticias ha sido borrada.
+
+# Product
+product: Producto
+product_control: Control de Productos
+product_index: Productos
+product_new: Nuevo Producto
+product_show: Ver Producto
+product_edit: Editar Producto
+product_delete: Borrar Producto
+product_name: Nombre
+product_content: Descripción
+product_active: Activo
+product_photos: Fotos
+product_photo_add: Agregar Foto
+product_photo_delete: Borrar Foto
+product_category: Categoría
+product_createdAt: Fecha de Registro
+product_updatedAt: Última Actualización
+Product has been created.: El producto ha sido creado.
+Product has been updated.: El producto ha sido actualizado.
+Product has been deleted.: El producto ha sido borrado.
+
+# ProductCategory
+productcategory: Categoría de productos
+productcategory_index: Categorías de productos
+productcategory_new: Nueva Categoría
+productcategory_show: Ver Categoría
+productcategory_edit: Editar Categoría
+productcategory_delete: Borrar Categoría
+productcategory_name: Nombre
+productcategory_createdAt: Fecha de Registro
+productcategory_updatedAt: Última Actualización
+ProductCategory has been created.: La categoría de productos ha sido creada.
+ProductCategory has been updated.: La categoría de productos ha sido actualizada.
+ProductCategory has been deleted.: La categoría de productos ha sido borrada.
+
+# History
+history: Historia
+history_index: Historias
+history_new: Nueva Historia
+history_show: Ver Historia
+history_edit: Editar Historia
+history_delete: Borrar Historia
+history_time: Momento
+history_title: Título
+history_abstract: Resumen
+history_content: Descripción
+history_rank: Orden
+history_published: Publicada
+history_file: Foto
+history_createdAt: Fecha de Registro
+history_updatedAt: Última Actualización
+History has been created.: La historia ha sido creada.
+History has been updated.: La historia ha sido actualizada.
+History has been deleted.: La historia ha sido borrada.
+
+# Process
+process: Proceso
+process_index: Proceso
+process_stages: Etapas de proceso
+process_new: Nueva Etapa
+process_show: Ver Etapa
+process_edit: Editar Etapa
+process_delete: Borrar Etapa
+process_title: Título
+process_name: Nombre
+process_abstract: Resumen
+process_content: Descripción
+process_rank: Orden
+process_active: Activo
+process_file: Foto
+process_createdAt: Fecha de Registro
+process_updatedAt: Última Actualización
+Process has been created.: La etapa ha sido creada.
+Process has been updated.: La etapa ha sido actualizada.
+Process has been deleted.: La etapa ha sido borrada.
+
+# Publication
+publication: Publicación
+publication_index: Publicaciones
+publication_new: Nueva Publicación
+publication_show: Ver Publicación
+publication_edit: Editar Publicación
+publication_delete: Borrar Publicación
+publication_title: Título
+publication_content: Descripción
+publication_rank: Orden
+publication_active: Activa
+publication_file: Archivo
+publication_createdAt: Fecha de Registro
+publication_updatedAt: Última Actualización
+Publication has been created.: La publicación ha sido creada.
+Publication has been updated.: La publicación ha sido actualizada.
+Publication has been deleted.: La publicación ha sido borrada.
+
+# Service
+service: Servicio
+service_index: Servicios
+service_new: Nuevo Servicio
+service_show: Ver Servicio
+service_edit: Editar Servicio
+service_delete: Borrar Servicio
+service_title: Título
+service_abstract: Abstract
+service_content: Descripción
+service_rank: Orden
+service_published: Publicado
+service_file: Foto
+service_createdAt: Fecha de Registro
+service_updatedAt: Última Actualización
+Service has been created.: El servicio ha sido creado.
+Service has been updated.: El servicio ha sido actualizado.
+Service has been deleted.: El servicio ha sido borrado.
+
+# Report
+report: Reportes
+report_index: Reportes
+report_new: Nuevo Reporte
+report_show: Ver Reporte
+report_edit: Editar Reporte
+report_delete: Borrar Reporte
+report_title: Título
+report_content: Contenido
+report_published: Publicado
+report_file: Archivo
+report_download: Descargar
+report_createdAt: Fecha de Registro
+report_updatedAt: Última Actualización
+Report has been created.: El reporte ha sido creado.
+Report has been updated.: El reporte ha sido actualizado.
+Report has been deleted.: El reporte ha sido borrado.
+
+# Camera
+camera: Cámaras
+camera_index: Cámaras
+camera_new: Nueva Cámara
+camera_show: Ver Cámara
+camera_edit: Editar Cámara
+camera_delete: Borrar Cámara
+camera_name: Nombre
+camera_source: Origen
+camera_active: Activa
+camera_createdAt: Fecha de Registro
+camera_updatedAt: Última Actualización
+Camera has been created.: La Cámara ha sido creada.
+Camera has been updated.: La Cámara ha sido actualizada.
+Camera has been deleted.: La Cámara ha sido borrada.
+
+# Dashboard
+dashboard: Dashboard
+dashboard_index: Dashboard
+
+# Gallery
+gallery: Galería
+gallery_index: Galería
+gallery_photos: Fotos
+gallery_all: Todas las fotos

@@ -1,0 +1,77 @@
+<?php
+
+namespace {{ namespace }}\Form{{ entity_namespace ? '\\' ~ entity_namespace : '' }};
+
+{% block use_statements %}
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+{% endblock use_statements %}
+
+{% block class_definition %}
+class {{ form_class }} extends AbstractType
+{% endblock class_definition %}
+{
+{% block class_body %}
+    {%- if fields|length > 0 %}
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+        {%- for field in fields %}
+            {%- if field in ['createdAt', 'updatedAt', 'deletedAt'] %}
+            {%- elseif field in ['published', 'active'] %}
+
+            ->add('{{ field }}', null, array(
+                'label' => '{{ entity_class|lower ~ '_' ~ field }}',
+                'required' => false,
+                'attr'  => array( 'labeled' => true, 'class' => 'switch' ),
+            ))
+            {%- elseif field in ['path'] %}
+
+            ->add('path', 'hidden', array(
+                'label' => '{{ entity_class|lower ~ '_path' }}',
+                'required' => false,
+                'attr' => array('preview' => true),
+            ))
+            {%- elseif field in ['file'] %}
+
+            ->add('file', 'file', array(
+                'label' => '{{ entity_class|lower ~ '_file' }}',
+                'required' => false,
+                'attr' => array('class' => 'file'),
+            ))
+            {%- else %}
+
+            ->add('{{ field }}', null, array(
+                'label' => '{{ entity_class|lower ~ '_' ~ field }}',
+            ))
+            {%- endif %}
+        {%- endfor %}
+
+        ;
+    }
+    {% endif %}
+
+    /**
+     * @param OptionsResolver $resolver
+     */
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => '{{ namespace }}\Entity{{ entity_namespace ? '\\' ~ entity_namespace : '' }}\{{ entity_class }}'
+        ));
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return '{{ form_type_name }}';
+    }
+{% endblock class_body %}
+}

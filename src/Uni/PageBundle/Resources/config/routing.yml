@@ -1,0 +1,44 @@
+uni_page:
+    path:     /
+    defaults: { _controller: UniPageBundle:Page:index }
+
+uni_page_member:
+    path:   /member
+    defaults: { _controller: UniPageBundle:Page:member }
+
+uni_page_history:
+    path:   /history
+    defaults: { _controller: UniPageBundle:Page:history }
+
+uni_page_process:
+    path:   /process
+    defaults: { _controller: UniPageBundle:Page:process }
+
+uni_page_notice:
+    path:   /notice
+    defaults: { _controller: UniPageBundle:Page:notice }
+
+uni_page_camera:
+    path:   /camera
+    defaults: { _controller: UniPageBundle:Page:camera }
+
+uni_page_notice_show:
+    path:     /{id}/noticeshow
+    defaults: { _controller: UniPageBundle:Page:noticeshow }
+
+uni_page_report:
+    path:   /report
+    defaults: { _controller: UniPageBundle:Page:report }
+
+uni_page_report_show:
+    path:   /{id}/reportshow
+    defaults: { _controller: UniPageBundle:Page:reportshow }
+
+uni_page_publication:
+    path:   /publication
+    defaults: { _controller: UniPageBundle:Page:publication }
+
+uni_page_gallery:
+    path:   /gallery
+    defaults: { _controller: UniPageBundle:Page:gallery }
+

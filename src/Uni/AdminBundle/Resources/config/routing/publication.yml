@@ -1,0 +1,31 @@
+publication:
+    path:     /
+    defaults: { _controller: "UniAdminBundle:Publication:index" }
+    methods: [GET]
+
+publication_show:
+    path:     /{id}/show
+    defaults: { _controller: "UniAdminBundle:Publication:show" }
+
+publication_new:
+    path:     /new
+    defaults: { _controller: "UniAdminBundle:Publication:new" }
+
+publication_create:
+    path:     /create
+    defaults: { _controller: "UniAdminBundle:Publication:create" }
+    methods: [POST]
+
+publication_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UniAdminBundle:Publication:edit" }
+
+publication_update:
+    path:     /{id}/update
+    defaults: { _controller: "UniAdminBundle:Publication:update" }
+    methods: [POST|PUT]
+
+publication_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UniAdminBundle:Publication:delete" }
+    methods: [POST|DELETE]

@@ -1,0 +1,44 @@
+
+    /**
+{% block phpdoc_method_header %}
+     * Lists all {{ entity }} entities.
+{% endblock phpdoc_method_header %}
+     *
+{% block phpdoc_method_annotations %}
+{% if 'annotation' == format %}
+     * @Route("/", name="{{ route_name_prefix }}")
+     * @Method("GET")
+     * @Template()
+{% endif %}
+{% endblock phpdoc_method_annotations %}
+     */
+{% block method_definition %}
+    public function indexAction(Request $request)
+{% endblock method_definition %}
+    {
+{% block method_body %}
+        $sort = $request->query->get('sort');
+        $direction = $request->query->get('direction');
+        $em = $this->getDoctrine()->getManager();
+        if($sort) $entities = $em->getRepository('{{ bundle }}:{{ entity }}')->findBy(array(), array($sort => $direction));
+        else $entities = $em->getRepository('{{ bundle }}:{{ entity }}')->findAll();
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate($entities, $request->query->getInt('page', 1), 10);
+{% endblock method_body %}
+
+{% block method_return %}
+{% if 'annotation' == format %}
+        return array(
+            'pagination' => $pagination,
+            'direction'  => $direction,
+            'sort'       => $sort,
+        );
+{% else %}
+        return $this->render('{{ bundle }}:{{ entity|replace({'\\': '/'}) }}:index.html.twig', array(
+            'pagination' => $pagination,
+            'direction'  => $direction,
+            'sort'       => $sort,
+        ));
+{% endif %}
+{% endblock method_return %}
+    }

@@ -1,0 +1,12 @@
+user_security_login:
+    path:     /login
+    defaults: { _controller: "UniUserBundle:Security:login" }
+
+user_security_check:
+    path:     /login_check
+    defaults: { _controller: "UniUserBundle:Security:check" }
+    methods: [POST]
+
+user_security_logout:
+    path:     /logout
+    defaults: { _controller: "UniUserBundle:Security:logout" }

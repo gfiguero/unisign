@@ -1,0 +1,17 @@
+{% extends ':Page:base.html.twig' %}
+
+{% block stylesheet %}<style type="text/css">body { background-color: black; }</style>{% endblock %}
+
+{% block body -%}
+    <section id="notice">
+        <div class="container-fluid">
+            <div class="row row-no-padding">
+                {% for camera in cameras %}
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <img class="img img-responsive" id="liveStream_{{ camera.name }}" src="{{ camera.source }}">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

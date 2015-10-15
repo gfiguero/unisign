@@ -1,0 +1,78 @@
+# All
+notification: Notificación
+createdAt: Fecha de Registro
+updatedAt: Última Actualización
+deletedAt: Fecha de Borrado
+Deleted records can not be recovered.: Los registros borrados no podrán ser recuperados.
+Are you sure?: ¿Está seguro?
+login: Acceso
+logout: Salir
+
+# All Buttons
+create: Registrar
+save: Guardar
+edit: Editar
+delete: Borrar
+confirm: Confirmar
+cancel: Cancelar
+back: Volver
+
+# User
+user: Usuario
+user_index: Usuarios
+user_new: Nuevo Usuario
+user_show: Ver Usuario
+user_edit: Editar Usuario
+user_delete: Borrar Usuario
+user_control: Control de Usuarios
+user_firstname: Nombre
+user_lastname: Apellido
+user_username: Username
+user_usernameCanonical: Username Canónico
+user_email: Email
+user_emailCanonical: Email Canónico
+user_enabled: Habilitado
+user_lastlogin: Último Acceso
+user_locked: Bloqueado
+user_expired: Expirado
+user_roles: Niveles de Acceso
+user_credentialsExpired: Credenciales Exp
+user_salt: Sal
+user_password: Password
+user_groups: Grupos
+user_confirmationToken: Token
+user_access: Permisos de edición
+
+user_passwordRequestedAt: Petición de Acceso
+user_createdAt: Fecha de Registro
+user_updatedAt: Última Actualización
+
+# User Profile
+user_profile: Perfil de usuario
+user_profile_show: Perfil de usuario
+user_profile_edit: Editar perfil
+user_profile_username: Nombre de Usuario
+user_profile_email: Email
+
+# User Registration
+user_registration_register: Registrar Usuario
+
+# User Change Password
+user_change_password: Cambiar Password
+
+# User Manage
+user_manage_index: Gestión de Usuarios
+user_manage_edit: Editar Usuario
+user_manage_delete: Borrar Usuario
+user_manage_index: Gestión de Usuarios
+
+# User Resetting
+user_resetting_request: Olvidé mi contraseña
+
+# Flash Messages
+User password has been reseted.: La contraseña ha sido reestablecida.
+User password has been updated.: La contraseña ha sido actualizada.
+Profile has been updated.: El perfil de usuario ha sido actualizado.
+User has been created.: El usuario ha sido creado.
+User has been updated.: El usuario ha sido actualizado.
+User has been deleted.: El usuario ha sido borrado.

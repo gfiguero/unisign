@@ -1,0 +1,40 @@
+{% block contact %}
+    <section id="contact">
+        <div class="container">
+            <div class="row text-center">
+
+                <div class="col-lg-12">
+                    <h2 class="section-heading">Contacto</h2>
+                </div>
+
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3 text-left">{{ icon('envelope fa-2x') }}</div>
+                                <div class="col-xs-9 text-right"><div class="huge">{% if frontpage %}{{ frontpage.email|raw }}{% endif %}</div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3 text-left">{{ icon('phone fa-2x') }}</div>
+                                <div class="col-xs-9 text-right"><div class="huge">{% if frontpage %}{{ frontpage.phonenumber|raw }}{% endif %}</div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3 text-left">{{ icon('map-marker fa-2x') }}</div>
+                                <div class="col-xs-9 text-right"><div class="huge">{% if frontpage %}{{ frontpage.address|raw }}{% endif %}</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}

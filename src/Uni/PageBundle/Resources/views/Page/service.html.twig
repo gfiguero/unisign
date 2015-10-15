@@ -1,0 +1,38 @@
+{% block service %}
+    <section id="service">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Servicios</h2>
+                </div>
+                {% for service in services %}
+                <a href="#" data-toggle="modal" data-target="#modal{{ service.id }}">
+                    <div class="col-md-4 text-center">
+                        <img class="img-circle img-responsive center-block" alt="{{ service.title }}" src="{{ asset(service.webpath) | imagine_filter('page_service') }}">
+                        <h3 class="service-heading">{{ service.title }}</h3>
+                        <p class="text-muted">{{ service.abstract|raw }}</p>
+                    </div>
+                </a>
+                <div class="modal fade" id="modal{{ service.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="modalLabel{{ service.id }}">{{ service.title }}</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <p class="text-muted">{{ service.content|raw }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

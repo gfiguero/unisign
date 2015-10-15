@@ -1,0 +1,197 @@
+{% extends 'BraincraftedBootstrapBundle:Form:bootstrap.html.twig' %}
+
+{% block button_widget %}
+    {% spaceless %}
+        {% if label is empty and label is not sameas(false) %}
+            {% set label = name|humanize %}
+        {% endif %}
+        {% if type is defined and type == 'submit' %}
+            {% set attr = attr|merge({ 'class': (attr.class|default('') ~ ' btn btn-'~button_class|default('primary'))|trim }) %}
+        {% else %}
+            {% set attr = attr|merge({ 'class': (attr.class|default('') ~ ' btn btn-'~button_class|default('default'))|trim }) %}
+        {% endif %}
+        {% if as_link is defined and as_link == true %}
+            <a {{ block('button_attributes') }}>{% if attr.icon is defined and attr.icon != '' %}{{ icon(attr.icon) }}&nbsp;{% endif %}{{ label|trans({}, translation_domain) }}</a>
+        {% else %}
+            <button type="{{ type|default('button') }}" {{ block('button_attributes') }}>{% if attr.icon is defined and attr.icon != '' %}{{ icon(attr.icon) }}&nbsp;{% endif %}{{ label|trans({}, translation_domain) }}</button>
+        {% endif %}
+    {% endspaceless %}
+{% endblock button_widget %}
+
+{% block button_row %}
+    {% spaceless %}
+        {% set style = style|default(bootstrap_get_style()) %}
+        {% set col_size = col_size|default(bootstrap_get_col_size()) %}
+
+        {% if attr.label_col is defined and attr.label_col is not empty %}
+            {% set label_col = attr.label_col %}
+        {% endif %}
+        {% if attr.widget_col is defined and attr.widget_col is not empty %}
+            {% set widget_col = attr.widget_col %}
+        {% endif %}
+        {% if attr.col_size is defined and attr.col_size is not empty %}
+            {% set col_size = attr.col_size %}
+        {% endif %}
+        {% if attr.style is defined and attr.style is not empty %}
+            {% set style = attr.style %}
+        {% endif %}
+
+        {% set label_col = label_col|default(bootstrap_get_label_col()) %}
+        {% set widget_col = widget_col|default(bootstrap_get_widget_col()) %}
+
+        {% if style == 'horizontal' %}
+            <div class="form-group">
+                <div class="col-{{ col_size }}-offset-{{ label_col }} col-{{ col_size }}-{{ widget_col }}">
+                    {{ form_widget(form) }}
+                </div>
+            </div>
+        {% elseif style == 'modify' %}
+            {{ form_widget(form) }}
+        {% else %}
+            <div class="form-group">
+                {{ form_widget(form) }}
+            </div>
+        {% endif %}
+
+    {% endspaceless %}
+{% endblock button_row %}
+
+{% block checkbox_row %}
+    {% spaceless %}
+        {% set style = style|default(bootstrap_get_style()) %}
+        {% set col_size = col_size|default(bootstrap_get_col_size()) %}
+
+        {% if attr.label_col is defined and attr.label_col is not empty %}
+            {% set label_col = attr.label_col %}
+        {% endif %}
+        {% if attr.widget_col is defined and attr.widget_col is not empty %}
+            {% set widget_col = attr.widget_col %}
+        {% endif %}
+        {% if attr.col_size is defined and attr.col_size is not empty %}
+            {% set col_size = attr.col_size %}
+        {% endif %}
+        {% if attr.style is defined and attr.style is not empty %}
+            {% set style = attr.style %}
+        {% endif %}
+
+        {% set class = '' %}
+        {% if align_with_widget is defined or attr.align_with_widget is defined %}
+            {% set widget_col = widget_col|default(bootstrap_get_widget_col()) %}
+            {% set label_col = label_col|default(bootstrap_get_label_col()) %}
+            {% set class = 'col-' ~ col_size ~ '-' ~ widget_col ~ ' col-' ~ col_size ~ '-offset-' ~ label_col %}
+            <div class="form-group {% if form.vars.errors|length > 0 %} has-error{% endif %}">
+            <div class="{{ class }}">
+        {% elseif no_form_group is not defined or no_form_group == false %}
+            <div class="form-group{% if form.vars.errors|length > 0 %} has-error{% endif %}">
+        {% endif %}
+
+        {% if attr.labeled is defined and attr.labeled %}
+            {% set required = false %}
+            {% set label_col = label_col|default(bootstrap_get_label_col()) %}
+            {% set widget_col = widget_col|default(bootstrap_get_widget_col()) %}
+            {{ form_label(form) }}
+            <div class="col-{{ col_size }}-{{ widget_col }}">
+                {{ block('checkbox_widget') }}
+                {{ form_errors(form) }}
+            </div>
+        {% else %}
+            {% set checkboxdata %}
+            {% if label is not sameas(false) %}
+                {% if not compound %}
+                    {% set label_attr = label_attr|merge({'for': id}) %}
+                {% endif %}
+                {% if inline is defined and inline %}
+                    {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' checkbox-inline')|trim}) %}
+                {% endif %}
+                {% if required %}
+                    {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+                {% endif %}
+                {% if label is empty %}
+                    {% set label = name|humanize %}
+                {% endif %}
+                <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
+                {{ block('checkbox_widget') }}
+                {{ label|trans({}, translation_domain)|raw -}}
+                </label>
+            {% else %}
+                {{ block('checkbox_widget') }}
+            {% endif %}
+            {{ form_errors(form) }}
+            {% endset %}
+
+            {% if inline is defined and inline %}
+                {{ checkboxdata|raw }}
+            {% else %}
+                <div class="checkbox">{{ checkboxdata|raw }}</div>
+            {% endif %}
+        {% endif %}
+
+        {{ block('form_help') }}
+
+        {% if align_with_widget is defined or attr.align_with_widget is defined %}
+            </div>
+            </div>
+        {% elseif no_form_group is not defined or no_form_group == false %}
+            </div>
+        {% endif %}
+
+        {% if style == 'inline' %}&nbsp;{% endif %}
+    {% endspaceless %}
+{% endblock checkbox_row %}
+
+{% block bootstrap_collection_widget %}
+    {% spaceless %}
+        {% if prototype is defined %}
+            {% set prototype_vars = {} %}
+            {% if style is defined %}
+                {% set prototype_vars = prototype_vars|merge({'style': style}) %}
+            {% endif %}
+            {% set prototype_html = '<div class="col-xs-' ~ form.vars.sub_widget_col ~ '">' ~ form_widget(prototype, prototype_vars) ~ '</div>' %}
+            {% if form.vars.allow_delete %}
+                {% set prototype_html = prototype_html ~ '<div class="col-xs-' ~ form.vars.button_col ~ '"><a href="#" class="btn btn-danger btn-md" data-removefield="collection" data-field="__id__"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> ' ~ form.vars.delete_button_text|trans({}, translation_domain)|parse_icons|raw ~ '</a></div>' %}
+            {% endif %}
+            {% set prototype_html = '<div class="row">' ~ prototype_html ~ '</div>' %}
+
+            {% set attr = attr|merge({'data-prototype': prototype_html }) %}
+            {% set attr = attr|merge({'data-prototype-name': prototype_name }) %}
+        {% endif %}
+        <div {{ block('widget_container_attributes') }}>
+            <ul class="bc-collection list-unstyled">
+                {% for field in form %}
+                    <li>
+                        <div class="row">
+                            <div class="col-xs-{{ form.vars.sub_widget_col }}">
+                                {{ form_widget(field) }}
+                                {{ form_errors(field) }}
+                            </div>
+                            {% if form.vars.allow_delete %}
+                                <div class="col-xs-{{ form.vars.button_col }}">
+                                    <a href="#" class="btn btn-danger btn-md" data-removefield="collection" data-field="{{ field.vars.id }}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> {{ form.vars.delete_button_text|trans({}, translation_domain)|parse_icons|raw }}</a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+            {% if form.vars.allow_add %}
+                <a href="#" class="btn btn-primary btn-md" data-addfield="collection" data-collection="{{ form.vars.id }}" data-prototype-name="{{ prototype_name }}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {{ form.vars.add_button_text|trans({}, translation_domain)|parse_icons|raw }}</a>
+            {% endif %}
+        </div>
+    {% endspaceless %}
+{% endblock bootstrap_collection_widget %}
+
+{% block uni_adminbundle_frontpagephoto_widget %}
+    {% spaceless %}
+        {% set path = form.children['photo_path'] %}
+        {% set file = form.children['photo_file'] %}
+        {% if path.vars.attr.preview is defined and path.vars.attr.preview == true and path.vars.value != '' %}
+            {% set image = 'uploads/frontpage_photos/' ~ path.vars.value %}
+            <img src="{{ asset(image) | imagine_filter('frontpage_edit') }}" alt="..." class="img-responsive img-thumbnail">
+            {{ form_widget(path) }}
+            {{ form_errors(path) }}
+        {% else %}
+            {{ form_widget(file) }}
+            {{ form_errors(file) }}
+        {% endif %}
+    {% endspaceless %}
+{% endblock uni_adminbundle_frontpagephoto_widget %}

@@ -1,0 +1,20 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+    - { resource: liip_imagine.yml }
+    - { resource: framework.yml }
+    - { resource: twig.yml }
+    - { resource: braincrafted.yml }
+    - { resource: doctrine.yml }
+    - { resource: stof_doctrine.yml }
+    - { resource: assetic.yml }
+    - { resource: swiftmailer.yml }
+    - { resource: stfalcon_tinymce.yml }
+    - { resource: fos_user.yml }
+    - { resource: knp_paginator.yml }
+    - { resource: knp_menu.yml }
+    - { resource: google.yml }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration

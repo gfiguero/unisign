@@ -1,0 +1,47 @@
+{% extends ':Page:base.html.twig' %}
+
+{% use 'UniPageBundle:Page:frontpage.html.twig' %}{% block stylesheet %}{{ parent() }}{% endblock %}
+
+{% use 'UniPageBundle:Page:footer.html.twig' %}{% block footer %}{{ parent() }}{% endblock %}
+
+{% block header %}
+    <header class="intro-header header-image">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>{{ "publication_index"|trans }}</h1>
+                        <hr class="small">
+                        <span class="subheading">{% if frontpage %}{{ frontpage.title }}{% endif %}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block javascript %}{% endblock %}
+
+{% block body -%}
+    <section id="publication">
+        <div class="container">
+            <div class="row">
+                {% for publication in publications %}
+                <div class="col-xs-12">
+                    <div class="col-xs-3">
+                        <h3><img class="img-responsive img-circle center-block" src="{{ asset(publication.webpath) | imagine_filter('page_publication') }}"></h3>
+                    </div>
+                    <div class="col-xs-9">
+                        <h3>{{ publication.title }}</h3>
+                        <p>{{ publication.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}</p>
+                        <p>{{ publication.content|raw }}</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block title %}{% if frontpage %}{{ frontpage.title }}{% else %}Título{% endif %}{% endblock %}
