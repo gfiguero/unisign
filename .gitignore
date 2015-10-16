@@ -9,5 +9,3 @@
 /composer.phar
 /vendor/
 /web/bundles/
-/web/uploads/*
-/web/media/*
